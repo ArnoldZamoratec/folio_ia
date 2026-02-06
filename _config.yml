@@ -217,6 +217,7 @@ plugins:
   - jekyll-archives
   - jekyll-toc
   - jekyll-scholar
+  - jekyll-socials
   - jemoji
 
 # Sitemap settings
