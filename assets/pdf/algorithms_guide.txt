@@ -1,0 +1,122 @@
+﻿# Algorithms and Data Structures Guide
+# Arnold Albert Huamán Zamora
+
+## Table of Contents
+1. Algorithm Analysis
+2. Common Algorithms
+3. Complexity Analysis
+4. Optimization Techniques
+
+## 1. Algorithm Analysis
+
+### Big O Notation
+- O(1) - Constant Time
+- O(log n) - Logarithmic Time
+- O(n) - Linear Time
+- O(n log n) - Linearithmic Time
+- O(n) - Quadratic Time
+- O(2ⁿ) - Exponential Time
+
+### Time Complexity Examples
+
+**Binary Search - O(log n)**
+`python
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+`
+
+**Quick Sort - O(n log n) average**
+`python
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quicksort(left) + middle + quicksort(right)
+`
+
+## 2. Common Algorithms
+
+### Sorting Algorithms
+- Bubble Sort: O(n)
+- Insertion Sort: O(n)
+- Merge Sort: O(n log n)
+- Quick Sort: O(n log n) average
+- Heap Sort: O(n log n)
+
+### Search Algorithms
+- Linear Search: O(n)
+- Binary Search: O(log n)
+- Depth-First Search (DFS): O(V + E)
+- Breadth-First Search (BFS): O(V + E)
+
+### Graph Algorithms
+- Dijkstra's Algorithm: O((V + E) log V)
+- Bellman-Ford: O(VE)
+- Floyd-Warshall: O(V)
+- Kruskal's MST: O(E log E)
+- Prim's MST: O(E log V)
+
+## 3. Dynamic Programming
+
+### Fibonacci - Memoization
+`python
+def fib(n, memo={}):
+    if n in memo:
+        return memo[n]
+    if n <= 2:
+        return 1
+    memo[n] = fib(n-1, memo) + fib(n-2, memo)
+    return memo[n]
+`
+
+### Longest Common Subsequence
+`python
+def lcs(X, Y):
+    m, n = len(X), len(Y)
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if X[i-1] == Y[j-1]:
+                dp[i][j] = dp[i-1][j-1] + 1
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+    return dp[m][n]
+`
+
+## 4. Optimization Techniques
+
+### Space-Time Tradeoffs
+- Use hash tables for O(1) lookups
+- Cache frequently accessed data
+- Use memoization for recursive algorithms
+
+### Algorithm Selection
+- Small datasets: Simple algorithms (insertion sort)
+- Large datasets: Efficient algorithms (merge sort, quick sort)
+- Nearly sorted data: Insertion sort or timsort
+- Guaranteed O(n log n): Merge sort or heap sort
+
+### Best Practices
+1. Analyze time and space complexity
+2. Consider average vs worst case
+3. Profile your code
+4. Use appropriate data structures
+5. Avoid premature optimization
+
+---
+
+ 2026 Arnold Albert Huamán Zamora
+Guía de Algoritmos y Estructuras de Datos
